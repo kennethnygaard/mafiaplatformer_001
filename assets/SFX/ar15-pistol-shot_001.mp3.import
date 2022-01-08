@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ar15-pistol-shot_001.mp3-d1fc467908c4ed13294ee33d32981b27.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/ar15-pistol-shot_001.mp3"
+dest_files=[ "res://.import/ar15-pistol-shot_001.mp3-d1fc467908c4ed13294ee33d32981b27.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
