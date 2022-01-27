@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/police_rifle.mp3-5a00372caf5477f880a95b520a8ca9a4.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/police_rifle.mp3"
+dest_files=[ "res://.import/police_rifle.mp3-5a00372caf5477f880a95b520a8ca9a4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/health_pickup.mp3-84fe1f70d8ea596c5f3f19cc9094b7b8.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/health_pickup.mp3"
+dest_files=[ "res://.import/health_pickup.mp3-84fe1f70d8ea596c5f3f19cc9094b7b8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

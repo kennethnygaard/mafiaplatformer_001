@@ -1,0 +1,350 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://resources/theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/images/main_menu_background.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/MenuTitleFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/images/silhouette_spritesheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/cigarette_smoke_silhouette.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/MenuItemFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=7]
+[ext_resource path="res://assets/SFX/menu-select-1.mp3" type="AudioStream" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "default"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "SFX_volume_active"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/SFX Volume:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 140 ), Vector2( 100, 150 ), Vector2( 100, 140 ), Vector2( 100, 130 ), Vector2( 100, 140 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "SFX_volume_inactive"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/SFX Volume:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 100, 140 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "music_volume_active"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/Music Volume:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 220 ), Vector2( 100, 230 ), Vector2( 100, 220 ), Vector2( 100, 210 ), Vector2( 100, 220 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "music_volume_inactive"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/Music Volume:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 100, 220 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "quit_active"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/Quit:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 380 ), Vector2( 100, 390 ), Vector2( 100, 380 ), Vector2( 100, 370 ), Vector2( 100, 380 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "quit_inactive"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/Quit:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 100, 380 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "select_level_active"
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/SelectLevel:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 300 ), Vector2( 100, 310 ), Vector2( 100, 300 ), Vector2( 100, 290 ), Vector2( 100, 300 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "select_level_inactive"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/SelectLevel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 100, 300 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/Startgame:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.001, 0.25, 0.5, 0.75, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 100, 60 ), Vector2( 100, 60 ), Vector2( 100, 70 ), Vector2( 100, 60 ), Vector2( 100, 50 ), Vector2( 100, 60 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/MenuLabels/Startgame:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 100, 60 ) ]
+}
+
+[node name="MainMenu" type="Node"]
+pause_mode = 2
+script = ExtResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="Sprite" parent="CanvasLayer"]
+texture = ExtResource( 2 )
+offset = Vector2( 512, 300 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+margin_left = 350.0
+margin_top = 150.0
+margin_right = 650.0
+margin_bottom = 550.0
+rect_min_size = Vector2( 300, 400 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 300, 50 )
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 120.0
+margin_top = 480.0
+margin_right = 912.0
+margin_bottom = 625.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = ExtResource( 3 )
+text = "Booze And Betrayal"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Cigarette_smoke" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 841, 145 )
+scale = Vector2( 14, 14 )
+texture = ExtResource( 5 )
+hframes = 8
+vframes = 2
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Cigarette_smoke"]
+autoplay = "default"
+playback_speed = 0.3
+anims/default = SubResource( 1 )
+
+[node name="Silhouette" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 925, 285 )
+scale = Vector2( 7, 7 )
+texture = ExtResource( 4 )
+hframes = 8
+vframes = 2
+frame = 11
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Silhouette"]
+autoplay = "default"
+playback_speed = 0.5
+anims/default = SubResource( 2 )
+
+[node name="MenuLabels" type="Node" parent="CanvasLayer"]
+
+[node name="Startgame" type="Label" parent="CanvasLayer/MenuLabels"]
+margin_left = 100.0
+margin_top = 64.087
+margin_right = 484.0
+margin_bottom = 136.087
+custom_fonts/font = ExtResource( 6 )
+text = "Start Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFX Volume" type="Label" parent="CanvasLayer/MenuLabels"]
+margin_left = 100.0
+margin_top = 140.0
+margin_right = 484.0
+margin_bottom = 252.999
+custom_fonts/font = ExtResource( 6 )
+text = "SFX Volume: 100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Music Volume" type="Label" parent="CanvasLayer/MenuLabels"]
+margin_left = 100.0
+margin_top = 220.0
+margin_right = 484.0
+margin_bottom = 333.0
+custom_fonts/font = ExtResource( 6 )
+text = "Music Volume: 100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectLevel" type="Label" parent="CanvasLayer/MenuLabels"]
+margin_left = 100.0
+margin_top = 300.0
+margin_right = 484.0
+margin_bottom = 413.0
+custom_fonts/font = ExtResource( 6 )
+text = "Select Level: 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Label" parent="CanvasLayer/MenuLabels"]
+margin_left = 100.0
+margin_top = 380.0
+margin_right = 484.0
+margin_bottom = 493.0
+custom_fonts/font = ExtResource( 6 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/SFX_volume_active = SubResource( 3 )
+anims/SFX_volume_inactive = SubResource( 4 )
+anims/music_volume_active = SubResource( 5 )
+anims/music_volume_inactive = SubResource( 6 )
+anims/quit_active = SubResource( 7 )
+anims/quit_inactive = SubResource( 8 )
+anims/select_level_active = SubResource( 9 )
+anims/select_level_inactive = SubResource( 10 )
+anims/start_active = SubResource( 11 )
+anims/start_inactive = SubResource( 12 )
+
+[node name="MenuLabels" type="Node" parent="."]
+
+[node name="Audioplayer" type="Node" parent="."]
+
+[node name="MenuChange" type="AudioStreamPlayer" parent="Audioplayer"]
+stream = ExtResource( 8 )
+bus = "SFX"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/pistol_click_001.mp3-b9d7286fdd71136cb3dfcfe2bd3167ac.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/pistol_click_001.mp3"
+dest_files=[ "res://.import/pistol_click_001.mp3-b9d7286fdd71136cb3dfcfe2bd3167ac.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

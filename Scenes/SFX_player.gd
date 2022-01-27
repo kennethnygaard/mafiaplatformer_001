@@ -30,6 +30,24 @@ func play_footstep():
 		steps_audio_players[i].play()
 		steps_audio_players[i].pitch_scale = pitch
 
+func play_hop():
+	$Hop_SFX_Player/AudioStreamPlayer.play()
+	
+func play_SMG():
+	$SMG_SFX_player/AudioStreamPlayer.play()
+
+func play_police_rifle():
+	$Police_rifle_SFX_player/AudioStreamPlayer.play()
+
+func play_pistol_click():
+	$Pistol_click_player/AudioStreamPlayer.play()
+
+func play_baseball_hit():
+	$Baseball_bat_hit_player/AudioStreamPlayer.play()
+
+func play_baseball_bat_miss():
+	$Baseball_bat_miss_player/AudioStreamPlayer.play()
+
 func on_finished_footstep():
 	is_footstep_playing = false
 

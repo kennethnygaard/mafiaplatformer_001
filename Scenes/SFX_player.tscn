@@ -1,0 +1,97 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://assets/SFX/ar15-pistol-shot_004.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/SFX/ar15-pistol-shot_005.mp3" type="AudioStream" id=2]
+[ext_resource path="res://assets/SFX/ar15-pistol-shot_003.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/SFX/footstep_003.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/SFX_player.gd" type="Script" id=5]
+[ext_resource path="res://assets/SFX/ar15-pistol-shot_001.mp3" type="AudioStream" id=6]
+[ext_resource path="res://assets/SFX/ar15-pistol-shot_002.mp3" type="AudioStream" id=7]
+[ext_resource path="res://assets/SFX/footstep_004.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/SFX/SMG_001.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/SFX/hop_001.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/SFX/footstep_001.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/SFX/footstep_002.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/SFX/police_rifle.mp3" type="AudioStream" id=13]
+[ext_resource path="res://assets/SFX/pistol_click_001.mp3" type="AudioStream" id=14]
+[ext_resource path="res://assets/SFX/baseball_bat_hit.mp3" type="AudioStream" id=15]
+[ext_resource path="res://assets/SFX/swoosh.mp3" type="AudioStream" id=16]
+
+[node name="SFX_player" type="Node"]
+script = ExtResource( 5 )
+
+[node name="Gun_SFX_Player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="Gun_SFX_Player"]
+stream = ExtResource( 6 )
+bus = "Gunshots"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Gun_SFX_Player"]
+stream = ExtResource( 7 )
+bus = "Gunshots"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Gun_SFX_Player"]
+stream = ExtResource( 3 )
+bus = "Gunshots"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Gun_SFX_Player"]
+stream = ExtResource( 1 )
+bus = "Gunshots"
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Gun_SFX_Player"]
+stream = ExtResource( 2 )
+bus = "Gunshots"
+
+[node name="Steps_SFX_Player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="Steps_SFX_Player"]
+stream = ExtResource( 11 )
+bus = "Steps"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Steps_SFX_Player"]
+stream = ExtResource( 12 )
+bus = "Steps"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Steps_SFX_Player"]
+stream = ExtResource( 4 )
+bus = "Steps"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Steps_SFX_Player"]
+stream = ExtResource( 8 )
+bus = "Steps"
+
+[node name="Hop_SFX_Player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Hop_SFX_Player"]
+stream = ExtResource( 10 )
+bus = "Hop"
+
+[node name="SMG_SFX_player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SMG_SFX_player"]
+stream = ExtResource( 9 )
+bus = "SMG_shots"
+
+[node name="Police_rifle_SFX_player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Police_rifle_SFX_player"]
+stream = ExtResource( 13 )
+bus = "Police Rifle"
+
+[node name="Pistol_click_player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pistol_click_player"]
+stream = ExtResource( 14 )
+bus = "SFX"
+
+[node name="Baseball_bat_hit_player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Baseball_bat_hit_player"]
+stream = ExtResource( 15 )
+bus = "Baseball_hit"
+
+[node name="Baseball_bat_miss_player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Baseball_bat_miss_player"]
+stream = ExtResource( 16 )
+bus = "Baseball_hit"

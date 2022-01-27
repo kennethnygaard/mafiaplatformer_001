@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ammo_pickup_002.mp3-7c04713fe0a069af6d6e67182cf3d9c6.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/ammo_pickup_002.mp3"
+dest_files=[ "res://.import/ammo_pickup_002.mp3-7c04713fe0a069af6d6e67182cf3d9c6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

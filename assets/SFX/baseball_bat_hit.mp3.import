@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/baseball_bat_hit.mp3-cde9b30756f751434321b301d36edaef.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/baseball_bat_hit.mp3"
+dest_files=[ "res://.import/baseball_bat_hit.mp3-cde9b30756f751434321b301d36edaef.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

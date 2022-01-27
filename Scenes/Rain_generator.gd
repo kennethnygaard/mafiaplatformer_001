@@ -12,6 +12,6 @@ func _process(delta):
 	
 func spawn_raindrop():
 	var main = get_parent()
-	for i in range(15):
+	for _i in range(15):
 		var newDrop = Raindrop.instance()
 		main.add_child(newDrop)

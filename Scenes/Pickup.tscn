@@ -1,0 +1,95 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/images/bullets.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Ammo_pickup.gd" type="Script" id=2]
+[ext_resource path="res://assets/SFX/ammo_pickup_002.mp3" type="AudioStream" id=3]
+[ext_resource path="res://assets/SFX/ammo_pickup_001.mp3" type="AudioStream" id=4]
+[ext_resource path="res://assets/fonts/dialogfont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/SFX/health_pickup.mp3" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9.24269, 7.04416 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 9.90897
+height = 6.52549
+
+[sub_resource type="Animation" id=3]
+resource_name = "dissolve"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[node name="Ammo_pickup" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 6
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.480593, 4.99562 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 65537
+collision_mask = 65
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.371643, 3.1218 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dissolve = SubResource( 3 )
+
+[node name="RevolverAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "Item_pckup"
+
+[node name="SMGAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "Item_pckup"
+
+[node name="HealthAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "Item_pckup"
+
+[node name="Label" type="Label" parent="."]
+margin_left = -4.02914
+margin_top = -20.4015
+margin_right = 35.9709
+margin_bottom = -4.40153
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

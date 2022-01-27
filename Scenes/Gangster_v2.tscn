@@ -1,21 +1,13 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/images/Gangster_002.png" type="Texture" id=1]
-[ext_resource path="res://assets/images/hit_wall.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Cigarette_smoke.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Gangster_v2.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/SFX_player.gd" type="Script" id=4]
-[ext_resource path="res://assets/SFX/ar15-pistol-shot_001.mp3" type="AudioStream" id=5]
-[ext_resource path="res://assets/SFX/ar15-pistol-shot_002.mp3" type="AudioStream" id=6]
-[ext_resource path="res://assets/SFX/ar15-pistol-shot_004.mp3" type="AudioStream" id=7]
-[ext_resource path="res://assets/SFX/ar15-pistol-shot_005.mp3" type="AudioStream" id=8]
-[ext_resource path="res://assets/SFX/ar15-pistol-shot_003.mp3" type="AudioStream" id=9]
-[ext_resource path="res://assets/SFX/footstep_003.mp3" type="AudioStream" id=10]
-[ext_resource path="res://assets/SFX/footstep_001.mp3" type="AudioStream" id=11]
-[ext_resource path="res://assets/SFX/footstep_002.mp3" type="AudioStream" id=12]
-[ext_resource path="res://assets/SFX/footstep_004.mp3" type="AudioStream" id=13]
+[ext_resource path="res://Scenes/SFX_player.tscn" type="PackedScene" id=4]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.16727, 13.803 )
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 3.74066
+height = 20.2576
 
 [sub_resource type="Animation" id=2]
 resource_name = "bottom_idle"
@@ -86,7 +78,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 48, 49, 50, 51, 52, 53, 54, 55 ]
+"values": [ 56, 57, 58, 59, 60, 61, 62, 63 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -129,6 +121,109 @@ tracks/1/keys = {
 "method": "shoot"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("SFX_player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_SMG"
+}, {
+"args": [  ],
+"method": "play_SMG"
+}, {
+"args": [  ],
+"method": "play_SMG"
+}, {
+"args": [  ],
+"method": "play_SMG"
+} ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "top_baseball_bat_hit"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 80, 81, 82, 83, 84, 85, 86, 87 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_pistol_animation_running"
+}, {
+"args": [ false ],
+"method": "set_pistol_animation_running"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_baseball_hit_sound"
+} ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "top_baseball_bat_idle"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 41, 42, 43, 44, 45, 46, 47 ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "top_nothing_idle"
@@ -167,7 +262,53 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-resource_name = "top_pistol_idle"
+resource_name = "top_pistol_click"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("TopSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 88, 89, 90 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("SFX_player")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_pistol_click"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_pistol_animation_running"
+}, {
+"args": [ false ],
+"method": "set_pistol_animation_running"
+} ]
+}
+
+[sub_resource type="Animation" id=10]
 length = 0.4
 loop = true
 step = 0.05
@@ -184,10 +325,8 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37, 38, 39 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "top_pistol_shooting"
+[sub_resource type="Animation" id=11]
 length = 0.4
-loop = true
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("TopSprite:frame")
@@ -229,34 +368,51 @@ tracks/2/keys = {
 "method": "play_gunshot"
 } ]
 }
-
-[sub_resource type="Animation" id=11]
-length = 0.4
-loop = true
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_pistol_animation_running"
+}, {
+"args": [ false ],
+"method": "set_pistol_animation_running"
+} ]
 }
+
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 4.89907
+height = 18.9433
+
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 5.07047
+height = 16.951
+
+[sub_resource type="CapsuleShape2D" id=15]
+radius = 5.40902
+height = 18.6771
 
 [node name="Gangster_v2" type="KinematicBody2D" groups=[
 "player",
 ]]
 scale = Vector2( 3, 3 )
-collision_layer = 0
+collision_layer = 524288
+collision_mask = 3
 script = ExtResource( 3 )
 __meta__ = {
 "_editor_description_": "
 "
 }
+active_gun = 0
+has_baseball_bat = true
+has_tommy_gun = true
+start_direction = 0
 
 [node name="BottomSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -271,8 +427,7 @@ vframes = 20
 frame = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( -0.475567, 2.14006 )
+position = Vector2( -0.37685, 2.14006 )
 shape = SubResource( 1 )
 
 [node name="BottomAnimationPlayer" type="AnimationPlayer" parent="."]
@@ -285,58 +440,44 @@ anims/bottom_walking = SubResource( 4 )
 playback_speed = 0.7
 anims/top_MG_idle = SubResource( 5 )
 anims/top_MG_shooting = SubResource( 6 )
+anims/top_baseball_bat_hit = SubResource( 17 )
+anims/top_baseball_bat_idle = SubResource( 16 )
 anims/top_nothing_idle = SubResource( 7 )
 anims/top_nothing_shooting = SubResource( 8 )
-anims/top_pistol_idle = SubResource( 9 )
-anims/top_pistol_shooting = SubResource( 10 )
+anims/top_pistol_click = SubResource( 9 )
+anims/top_pistol_idle = SubResource( 10 )
+anims/top_pistol_shooting = SubResource( 11 )
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 12, 0 )
+position = Vector2( 5.92632, -0.101232 )
 enabled = true
 cast_to = Vector2( 200, 0 )
 collide_with_areas = true
 
-[node name="Hit" type="Sprite" parent="."]
-visible = false
-position = Vector2( 40.8739, -9.0727 )
-texture = ExtResource( 2 )
-hframes = 8
-frame = 7
+[node name="SFX_player" parent="." instance=ExtResource( 4 )]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Hit"]
-autoplay = "hitting_wall"
-anims/hitting_wall = SubResource( 11 )
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 524288
+collision_mask = 524288
 
-[node name="SFX_player" type="Node" parent="."]
-script = ExtResource( 4 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2( -0.0737305, 1.40088 )
+shape = SubResource( 12 )
 
-[node name="Gun_SFX_Player" type="Node" parent="SFX_player"]
+[node name="Cigarette_smoke" parent="." instance=ExtResource( 2 )]
 
-[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="SFX_player/Gun_SFX_Player"]
-stream = ExtResource( 5 )
+[node name="Behind_detection_box" type="Area2D" parent="."]
+collision_layer = 262144
+collision_mask = 0
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SFX_player/Gun_SFX_Player"]
-stream = ExtResource( 6 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Behind_detection_box"]
+position = Vector2( -0.0751445, 1.12716 )
+shape = SubResource( 14 )
 
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SFX_player/Gun_SFX_Player"]
-stream = ExtResource( 9 )
+[node name="Pickup_area" type="Area2D" parent="."]
+collision_layer = 65536
+collision_mask = 65536
 
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="SFX_player/Gun_SFX_Player"]
-stream = ExtResource( 7 )
-
-[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="SFX_player/Gun_SFX_Player"]
-stream = ExtResource( 8 )
-
-[node name="Steps_SFX_Player" type="Node" parent="SFX_player"]
-
-[node name="AudioStreamPlayer1" type="AudioStreamPlayer" parent="SFX_player/Steps_SFX_Player"]
-stream = ExtResource( 11 )
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="SFX_player/Steps_SFX_Player"]
-stream = ExtResource( 12 )
-
-[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="SFX_player/Steps_SFX_Player"]
-stream = ExtResource( 10 )
-
-[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="SFX_player/Steps_SFX_Player"]
-stream = ExtResource( 13 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup_area"]
+position = Vector2( -0.229436, 1.56782 )
+shape = SubResource( 15 )

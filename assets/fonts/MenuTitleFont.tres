@@ -1,0 +1,9 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/fonts/kismet-normal.regular.ttf"
+
+[resource]
+size = 140
+outline_color = Color( 0.552941, 0.121569, 0.121569, 1 )
+font_data = SubResource( 1 )
