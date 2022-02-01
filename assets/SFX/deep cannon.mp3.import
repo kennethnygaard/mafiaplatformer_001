@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/deep cannon.mp3-332bc9f1a80053ba668c9edcc18bb109.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/deep cannon.mp3"
+dest_files=[ "res://.import/deep cannon.mp3-332bc9f1a80053ba668c9edcc18bb109.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

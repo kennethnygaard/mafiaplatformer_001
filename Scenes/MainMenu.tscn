@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://resources/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/main_menu_background.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/fonts/MenuItemFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=7]
 [ext_resource path="res://assets/SFX/menu-select-1.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/images/green_background.png" type="Texture" id=9]
+[ext_resource path="res://assets/SFX/menu_thud.mp3" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -213,6 +215,11 @@ script = ExtResource( 7 )
 texture = ExtResource( 2 )
 offset = Vector2( 512, 300 )
 
+[node name="Green_background" type="Sprite" parent="CanvasLayer"]
+visible = false
+texture = ExtResource( 9 )
+offset = Vector2( 512, 300 )
+
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 visible = false
 margin_left = 350.0
@@ -276,9 +283,9 @@ anims/default = SubResource( 2 )
 
 [node name="Startgame" type="Label" parent="CanvasLayer/MenuLabels"]
 margin_left = 100.0
-margin_top = 64.087
+margin_top = 60.0
 margin_right = 484.0
-margin_bottom = 136.087
+margin_bottom = 132.0
 custom_fonts/font = ExtResource( 6 )
 text = "Start Game"
 __meta__ = {
@@ -288,7 +295,7 @@ __meta__ = {
 [node name="SFX Volume" type="Label" parent="CanvasLayer/MenuLabels"]
 margin_left = 100.0
 margin_top = 140.0
-margin_right = 484.0
+margin_right = 532.0
 margin_bottom = 252.999
 custom_fonts/font = ExtResource( 6 )
 text = "SFX Volume: 100%"
@@ -347,4 +354,9 @@ anims/start_inactive = SubResource( 12 )
 
 [node name="MenuChange" type="AudioStreamPlayer" parent="Audioplayer"]
 stream = ExtResource( 8 )
+bus = "SFX"
+
+[node name="MenuThud" type="AudioStreamPlayer" parent="Audioplayer"]
+stream = ExtResource( 10 )
+volume_db = -10.0
 bus = "SFX"

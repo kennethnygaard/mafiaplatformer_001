@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/menu_thud.mp3-26a657dc1bce9e443a8a490a400c5fa9.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/menu_thud.mp3"
+dest_files=[ "res://.import/menu_thud.mp3-26a657dc1bce9e443a8a490a400c5fa9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

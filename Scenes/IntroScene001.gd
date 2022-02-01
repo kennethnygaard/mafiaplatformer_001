@@ -8,6 +8,7 @@ var dialog_time = 3
 func _ready():
 	get_tree().paused = false
 	progress = 0
+	set_talker("none")
 	$Timer.connect("timeout", self, "increase_progress")
 	$Timer.start(2)
 	$Camera2D.global_position = Vector2(-3100, 100)

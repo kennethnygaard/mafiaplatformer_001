@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/SFX/ar15-pistol-shot_004.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/SFX/ar15-pistol-shot_005.mp3" type="AudioStream" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://assets/SFX/pistol_click_001.mp3" type="AudioStream" id=14]
 [ext_resource path="res://assets/SFX/baseball_bat_hit.mp3" type="AudioStream" id=15]
 [ext_resource path="res://assets/SFX/swoosh.mp3" type="AudioStream" id=16]
+[ext_resource path="res://assets/SFX/deep cannon.mp3" type="AudioStream" id=17]
+[ext_resource path="res://assets/SFX/retro-pirate-cannon.mp3" type="AudioStream" id=18]
 
 [node name="SFX_player" type="Node"]
 script = ExtResource( 5 )
@@ -95,3 +97,13 @@ bus = "Baseball_hit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Baseball_bat_miss_player"]
 stream = ExtResource( 16 )
 bus = "Baseball_hit"
+
+[node name="Siegfrieds_cannon_player" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Siegfrieds_cannon_player"]
+stream = ExtResource( 18 )
+bus = "Siegfrieds_cannon"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Siegfrieds_cannon_player"]
+stream = ExtResource( 17 )
+bus = "Siegfrieds_cannon"

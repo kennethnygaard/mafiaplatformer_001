@@ -10,6 +10,7 @@ var keys = Vector2.ZERO
 var prev_keys = Vector2.ZERO
 
 var health = 100
+var is_alive = true
 
 var jump_strength = 1000
 var direction = "right"
@@ -21,7 +22,7 @@ var pistol_animation_running = false
 export var active_gun = 2
 var damage = [0, 5, 3, 1, 1]
 
-var ammo = [0, 1000, 6, 20, 0]
+export var ammo = [0, 1000, 6, 20, 0]
 export var has_baseball_bat = false
 export var has_tommy_gun = false
 export var has_shotgun = false
@@ -33,6 +34,9 @@ var hit_raycast = [Vector2(10, 0), Vector2(15, 0), Vector2(200, 0), Vector2(200,
 var shooting_animation = ["top_nothing_idle", "top_baseball_bat_hit", "top_pistol_shooting", "top_MG_shooting"]
 var click_animation = ["top_nothing_idle", "top_baseball_bat_idle", "top_pistol_click", "top_MG_idle"]
 var top_idle_animation = ["top_nothing_idle", "top_baseball_bat_idle", "top_pistol_idle", "top_MG_idle"]
+
+var die_forward_animation = ["die_nothing_forward", "die_bat_forward", "die_pistol_forward", "die_pistol_forward"]
+var die_backward_animation = ["die_nothing_backward", "die_bat_backward", "die_pistol_backward", "die_nothing_backward"]
 
 enum {WALKING, STANDING, SHOOTING, NOT_SHOOTING}
 
@@ -57,6 +61,9 @@ func _ready():
 		scale.x *= -1
 	$Pickup_area.connect("area_entered", self, "on_pick_up_item")
 	
+	$BottomSprite.visible = true
+	$Cigarette_smoke.visible = true
+	
 	$TopAnimationPlayer.play("top_pistol_idle")
 	match active_gun:
 		0:
@@ -66,15 +73,18 @@ func _ready():
 		2:
 			$TopSprite.frame = 48 
 	
-	has_gun [1] = has_baseball_bat
+	has_gun[1] = has_baseball_bat
 	has_gun[3] = has_tommy_gun
 	has_gun[4] = has_shotgun
 
+	change_ammo_on_HUD()
+
 func _process(_delta):
-	process_input()
-	process_states()
-	process_animation()
-	process_SFX()
+	if(is_alive):
+		process_input()
+		process_states()
+		process_animation()
+		process_SFX()
 
 func _physics_process(delta):
 	process_movement(delta)	
@@ -123,7 +133,6 @@ func next_weapon():
 		active_gun = 0
 	
 	$RayCast2D.cast_to = hit_raycast[active_gun]
-	emit_signal("change_gun_icon", active_gun)
 	change_ammo_on_HUD()
 
 func process_movement(delta):
@@ -134,9 +143,10 @@ func process_movement(delta):
 		move_vector.x *= ground_friction
 	else:
 		move_vector.x *= ground_friction
-	move_vector.x += acceleration*keys.x*delta
+	if(is_alive):
+		move_vector.x += acceleration*keys.x*delta
 	move_vector.x = clamp(move_vector.x, -max_velocity_x, max_velocity_x)
-	if(keys.y == -1 && is_on_floor()):
+	if(keys.y == -1 && is_on_floor() && is_alive):
 		move_vector.y -= jump_strength
 		$SFX_player.play_hop()
 
@@ -213,12 +223,23 @@ func change_health(health_change, killerpos):
 	health += health_change
 	health = clamp(health, 0, 100)
 	emit_signal("health_changed", health)
+	if(health <= 0 && is_alive):
+		is_alive = false
+		$BottomSprite.visible = false
+		$Cigarette_smoke.visible = false
+		if(killerpos.x > global_position.x && direction == "right"):
+			$TopAnimationPlayer.play(die_backward_animation[active_gun])
+		elif(killerpos.x < global_position.x && direction == "left"):
+			$TopAnimationPlayer.play(die_backward_animation[active_gun])
+		else:
+			$TopAnimationPlayer.play(die_forward_animation[active_gun])
 
 func change_ammo_on_HUD():
 	var text = ""
 	if(active_gun > 1):
 		text = "AMMO: " + str(ammo[active_gun])
 	emit_signal("ammo_changed", text)
+	emit_signal("change_gun_icon", active_gun)
 
 func set_pistol_animation_running(status):
 	pistol_animation_running = status
@@ -227,7 +248,7 @@ func on_pick_up_item(area2d):
 	var item = area2d.get_parent()
 	if(!item.is_picked_up):
 		item.is_picked_up = true
-		print("type: ", item.item_type)
+		print("item picked up: ", item.item_type)
 		if(item.item_type == "ammo"):
 			ammo[item.ammo_type] += item.amount
 			change_ammo_on_HUD()
@@ -237,3 +258,6 @@ func on_pick_up_item(area2d):
 		if(item.item_type == "weapon"):
 			has_gun[item.weapon_type] = true
 		item.start_end_sequence()
+
+func restart_level():
+	get_tree().get_nodes_in_group("scene")[0].die_fadeout()

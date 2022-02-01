@@ -1,6 +1,7 @@
 extends Node
 
 onready var players = get_tree().get_nodes_in_group("player")
+onready var Pause_menu = preload("res://Scenes/Pause_menu.tscn")
 
 func _ready():
 	players[0].connect("change_gun_icon", self, "on_gun_icon_changed")
@@ -9,8 +10,17 @@ func _ready():
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	for enemy in enemies:
 		enemy.connect("health_changed", self, "change_health")
+	on_gun_icon_changed(players[0].active_gun)
+	players[0].change_ammo_on_HUD()
+
+func _process(delta):
+	if(Input.is_action_just_pressed("escape")):
+		var pause_menu = Pause_menu.instance()
+		add_child(pause_menu)
+		get_tree().paused = true
 
 func on_gun_icon_changed(active_gun):
+	print("gun icon changed in scene")
 	$HUD/Gun_icon.frame = active_gun
 
 func change_health(new_health):

@@ -5,7 +5,7 @@ func _ready():
 	
 	$EndArea.connect("area_entered", self, "on_end_area_entered")
 	$End_fadeout/Sprite.modulate = Color(1, 1, 1, 0)
-	
+	$End_fadeout/Sprite.visible = true
 	#get_tree().paused = true
 
 func _process(_delta):
@@ -14,7 +14,6 @@ func _process(_delta):
 func unpause():
 	get_tree().paused = false
 
-
 func on_end_area_entered(area2d):
 	if(area2d.get_parent().type == "player"):
 		print("end of level")
@@ -22,4 +21,4 @@ func on_end_area_entered(area2d):
 		get_tree().paused = true
 		
 func end_level():
-	$"/root/LevelManager".change_level(4)
+	$"/root/LevelManager".increment_level()

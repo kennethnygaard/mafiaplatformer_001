@@ -48,6 +48,10 @@ func play_baseball_hit():
 func play_baseball_bat_miss():
 	$Baseball_bat_miss_player/AudioStreamPlayer.play()
 
+func play_siegfrieds_cannon():
+	$Siegfrieds_cannon_player/AudioStreamPlayer.play()
+	$Siegfrieds_cannon_player/AudioStreamPlayer2.play()
+
 func on_finished_footstep():
 	is_footstep_playing = false
 

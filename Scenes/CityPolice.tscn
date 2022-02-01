@@ -110,7 +110,7 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=8]
 resource_name = "shooting_handgun"
 length = 0.4
 step = 0.05
@@ -158,7 +158,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 step = 0.05
@@ -217,8 +217,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "shooting_rifle_down"
+[sub_resource type="Animation" id=10]
 length = 0.4
 step = 0.05
 tracks/0/type = "value"
@@ -265,7 +264,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.4
 loop = true
 step = 0.05
@@ -282,7 +281,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27, 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.4
 loop = true
 step = 0.05
@@ -299,16 +298,16 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37, 38, 39 ]
 }
 
-[sub_resource type="RectangleShape2D" id=12]
+[sub_resource type="RectangleShape2D" id=13]
 extents = Vector2( 10.3345, 41.4158 )
 
-[sub_resource type="RectangleShape2D" id=13]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 14.9615, 41.5409 )
 
-[sub_resource type="RectangleShape2D" id=14]
+[sub_resource type="RectangleShape2D" id=15]
 extents = Vector2( 222.498, 3.20328 )
 
-[sub_resource type="RectangleShape2D" id=15]
+[sub_resource type="RectangleShape2D" id=16]
 extents = Vector2( 34.7587, 10 )
 
 [node name="CityPolice" type="KinematicBody2D" groups=[
@@ -339,17 +338,17 @@ anims/die_forward_headshot = SubResource( 4 )
 anims/die_headshot_backwards = SubResource( 5 )
 anims/idle = SubResource( 6 )
 anims/idle_rifle = SubResource( 7 )
-anims/shooting_handgun = SubResource( 18 )
-anims/shooting_rifle = SubResource( 8 )
-anims/shooting_rifle_down = SubResource( 9 )
-anims/walking_nothing = SubResource( 10 )
-anims/walking_rifle = SubResource( 11 )
+anims/shooting_handgun = SubResource( 8 )
+anims/shooting_rifle = SubResource( 9 )
+anims/shooting_rifle_down = SubResource( 10 )
+anims/walking_nothing = SubResource( 11 )
+anims/walking_rifle = SubResource( 12 )
 
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( -0.875351, 5.62732 )
-shape = SubResource( 12 )
+shape = SubResource( 13 )
 
 [node name="Turnpoint_area" type="Area2D" parent="."]
 visible = false
@@ -358,7 +357,7 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turnpoint_area"]
 position = Vector2( -0.375153, 5.50227 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="Stop_float_area" type="Area2D" parent="."]
 visible = false
@@ -367,7 +366,7 @@ collision_mask = 131072
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Stop_float_area"]
 position = Vector2( -0.375153, 5.50227 )
-shape = SubResource( 13 )
+shape = SubResource( 14 )
 
 [node name="Detect_player_area" type="Area2D" parent="."]
 collision_layer = 0
@@ -375,7 +374,7 @@ collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detect_player_area"]
 position = Vector2( 270.76, -10.044 )
-shape = SubResource( 14 )
+shape = SubResource( 15 )
 
 [node name="SFX_player" parent="." instance=ExtResource( 1 )]
 
@@ -394,4 +393,4 @@ collision_mask = 262144
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turn_area"]
 position = Vector2( -100.368, 1.77555 )
-shape = SubResource( 15 )
+shape = SubResource( 16 )

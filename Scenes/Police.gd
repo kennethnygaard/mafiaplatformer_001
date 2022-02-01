@@ -105,14 +105,14 @@ func shoot():
 	var obj_hit = null
 	
 	if(collider!= null && collider.get_parent() != null):
-		pass
 		obj_hit = collider.get_parent()
 	if(obj_hit != null && obj_hit.get("type") != null && obj_hit.type == "police"):
 		ok = false
-	if(is_alive && ok):
-		is_shooting = true
-		var delay = rnd.randf_range(0.0, 0.4)
-		$Shoot_timer.start(delay)
+	if(is_alive && ok && obj_hit != null && obj_hit.get("is_alive") != null):
+		if(obj_hit.is_alive):
+			is_shooting = true
+			var delay = rnd.randf_range(0.0, 0.4)
+			$Shoot_timer.start(delay)
 
 func on_shoot_timer_timeout():
 	if(is_alive):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://assets/images/warehouse.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Gangster_v2.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Scenes/Pickup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Sammys_escape_car.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Act_intro.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/images/black_background.png" type="Texture" id=10]
+[ext_resource path="res://assets/images/red_background.png" type="Texture" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "warehouse.png 0"
@@ -914,6 +916,69 @@ extents = Vector2( 10, 64.2103 )
 2/shapes = [  ]
 2/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=24]
+extents = Vector2( 28.9141, 57.2718 )
+
+[sub_resource type="Animation" id=25]
+resource_name = "fadeout"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.4, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_level"
+} ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "fadeout"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2.4, 3.6, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart_level"
+} ]
+}
+
 [node name="Scene2" type="Node" groups=[
 "scene",
 ]]
@@ -1038,7 +1103,7 @@ script = ExtResource( 5 )
 [node name="Timer" type="Timer" parent="Rain_generator"]
 
 [node name="Gangster_v2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -3870.43, 335.994 )
+position = Vector2( -3714.04, 334.421 )
 z_index = 2
 has_baseball_bat = false
 has_tommy_gun = false
@@ -1155,7 +1220,7 @@ frame = 56
 [node name="Ammo_pickup" parent="." instance=ExtResource( 7 )]
 position = Vector2( -348.012, -26.2553 )
 scale = Vector2( 2, 2 )
-ammo_type = 3
+ammo_type = 2
 
 [node name="Foreground_tilemap" type="TileMap" parent="."]
 z_index = 10
@@ -1174,3 +1239,34 @@ scale = Vector2( -3, 3 )
 [node name="Baseball_bat_pickup" parent="." instance=ExtResource( 7 )]
 position = Vector2( -431.81, 57.2547 )
 item_type = "weapon"
+
+[node name="EndArea" type="Area2D" parent="."]
+position = Vector2( 4721.97, 132.53 )
+collision_layer = 0
+collision_mask = 524288
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
+position = Vector2( 0, 0.323807 )
+shape = SubResource( 24 )
+
+[node name="End_fadeout" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="Sprite" type="Sprite" parent="End_fadeout"]
+modulate = Color( 1, 1, 1, 0.333333 )
+texture = ExtResource( 10 )
+offset = Vector2( 512, 300 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="End_fadeout"]
+anims/fadeout = SubResource( 25 )
+
+[node name="Die_fadeout" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="Sprite" type="Sprite" parent="Die_fadeout"]
+modulate = Color( 1, 1, 1, 0.416667 )
+texture = ExtResource( 11 )
+offset = Vector2( 512, 300 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Die_fadeout"]
+anims/fadeout = SubResource( 26 )

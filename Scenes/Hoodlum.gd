@@ -28,6 +28,7 @@ var health = 5
 var damage = 10
 
 export var has_ammo = false
+export var ammo_type = 2
 export var has_health = false
 
 var is_player_in_sight = false
@@ -41,6 +42,8 @@ func _ready():
 	$Detect_player_area.connect("area_entered", self, "on_player_detected")
 	$Detect_player_area.connect("area_exited", self, "on_player_undetected")
 	$Shoot_delay_timer.connect("timeout", self, "set_shooting")
+
+	$Sprite.frame = 0
 	
 func _process(delta):
 	move_vector.y += gravity*delta
@@ -49,15 +52,18 @@ func _process(delta):
 	process_animation()
 	process_movement(delta)
 	
-	if(Input.is_action_just_pressed("a")):
-		print(direction, " ", move_speed)
-	
 func process_animation():
+	var ok = false
 	if(is_alive):
 		if(is_walking && !is_ready_to_shoot):
 			$AnimationPlayer.play(walk_anims[character])
 		else:
-			if(is_shooting):
+			$RayCast2D.force_raycast_update()
+			if($RayCast2D.is_colliding()):
+				var obj_hit = $RayCast2D.get_collider().get_parent()
+				if(obj_hit.is_alive):
+					ok = true
+			if(is_shooting && ok):
 				$AnimationPlayer.play(shooting_anims[character])
 			else:
 				$AnimationPlayer.play(idle_anims[character])
@@ -166,7 +172,7 @@ func spawn_item():
 		var new_item = Item.instance()
 		if(has_ammo):
 			new_item.item_type = "ammo"
-			new_item.ammo_type = 3
+			new_item.ammo_type = ammo_type
 		else:
 			new_item.item_type = "health"
 		new_item.global_position = global_position

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/retro-pirate-cannon.mp3-8ae88d42162e8b2b8028f812103df841.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/retro-pirate-cannon.mp3"
+dest_files=[ "res://.import/retro-pirate-cannon.mp3-8ae88d42162e8b2b8028f812103df841.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

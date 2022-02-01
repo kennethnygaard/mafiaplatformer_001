@@ -946,7 +946,6 @@ position = Vector2( -2627.9, 143.858 )
 position = Vector2( -2723.31, 122.909 )
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 margin_left = -2949.42
 margin_top = -35.0821
 margin_right = -2754.42

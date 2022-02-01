@@ -33,8 +33,6 @@ func _ready():
 	if(item_type == "weapon"):
 		$Sprite.frame = 6 + weapon_type
 
-
-	print("ammo type: ", ammo_type)
 	scale = Vector2(2, 2)
 	$Label.visible = false
 

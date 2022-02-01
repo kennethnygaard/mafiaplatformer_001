@@ -6,11 +6,15 @@ var active_anims = ["start_active", "SFX_volume_active", "music_volume_active", 
 var inactive_anims = ["start_inactive", "SFX_volume_inactive", "music_volume_inactive", "select_level_inactive", "quit_inactive"]
 onready var menu_labels = $CanvasLayer/MenuLabels.get_children()
 
-var SFX_volume = 100
-var musicvolume = 100
 var volume_steps = 10
+var selected_level = 1
+
+
+var levels = [0, 1, 4, 5, 6]
+var max_level = 4
 
 func _ready():
+	update_volume_labels()
 	$AnimationPlayer.play("start_active")
 
 func _process(delta):
@@ -34,25 +38,61 @@ func process_input():
 			0:
 				pass
 			1:
-				$Audioplayer/MenuChange.play()
-				SFX_volume = clamp(SFX_volume-volume_steps, 0, 100)
-				$"CanvasLayer/MenuLabels/SFX Volume".text = "SFX Volume: " + str(SFX_volume) + "%"
-				set_sfx_volume(SFX_volume)
+				if($"/root/Globals".SFX_volume - volume_steps > 0-volume_steps):
+					$Audioplayer/MenuChange.play()
+				else:
+					$Audioplayer/MenuThud.play()
+				$"/root/Globals".SFX_volume = clamp($"/root/Globals".SFX_volume-volume_steps, 0, 100)
+				update_volume_labels()
+				set_sfx_volume($"/root/Globals".SFX_volume)
+			2:
+				if($"/root/Globals".music_volume - volume_steps > 0-volume_steps):
+					$Audioplayer/MenuChange.play()
+				else:
+					$Audioplayer/MenuThud.play()
+				$"/root/Globals".music_volume = clamp($"/root/Globals".music_volume-volume_steps, 0, 100)
+				update_volume_labels()
+				set_music_volume($"/root/Globals".music_volume)
+			3:
+				if(selected_level>1):
+					$Audioplayer/MenuChange.play()
+				else:
+					$Audioplayer/MenuThud.play()
+				selected_level = clamp(selected_level-1, 1, max_level)
+				$CanvasLayer/MenuLabels/SelectLevel.text = "Select Level: " + str(selected_level)
 				
 	if(Input.is_action_just_pressed("ui_right")):
 		match active_item:
 			0:
 				pass
 			1:
-				$Audioplayer/MenuChange.play()
-				SFX_volume = clamp(SFX_volume+volume_steps, 0, 100)
-				$"CanvasLayer/MenuLabels/SFX Volume".text = "SFX Volume: " + str(SFX_volume) + "%"
-				set_sfx_volume(SFX_volume)
-		
+				if($"/root/Globals".SFX_volume + volume_steps < 100+volume_steps):
+					$Audioplayer/MenuChange.play()
+				else:
+					$Audioplayer/MenuThud.play()
+				$"/root/Globals".SFX_volume = clamp($"/root/Globals".SFX_volume+volume_steps, 0, 100)
+				update_volume_labels()
+				set_sfx_volume($"/root/Globals".SFX_volume)
+			2:
+				if($"/root/Globals".music_volume + volume_steps < 100+volume_steps):
+					$Audioplayer/MenuChange.play()
+				else:
+					$Audioplayer/MenuThud.play()
+				$"/root/Globals".music_volume = clamp($"/root/Globals".music_volume+volume_steps, 0, 100)
+				update_volume_labels()
+				set_music_volume($"/root/Globals".music_volume)
+			3:
+				if(selected_level<max_level):
+					$Audioplayer/MenuChange.play()
+				else:
+					$Audioplayer/MenuThud.play()
+				selected_level = clamp(selected_level+1, 1, max_level)
+				$CanvasLayer/MenuLabels/SelectLevel.text = "Select Level: " + str(selected_level)
+
 	if(Input.is_action_just_pressed("ui_select")):
 		match active_item:
 			0:
-				LevelManager.change_level(1)
+				LevelManager.change_level(levels[selected_level])
 			4:
 				get_tree().quit()
 	
@@ -65,9 +105,18 @@ func update_anims():
 			menu_labels[i].add_color_override("font_color", Color(1, 1, 1, 1))
 			#$AnimationPlayer.play(inactive_anims[i])
 
+func update_volume_labels():
+	$"CanvasLayer/MenuLabels/SFX Volume".text = "SFX Volume: " + str($"/root/Globals".SFX_volume) + "%"
+	$"CanvasLayer/MenuLabels/Music Volume".text = "Music Volume: " + str($"/root/Globals".music_volume) + "%"
+
 func set_sfx_volume(vol):
 	vol /= 100.0
 	var sfx_bus_index = AudioServer.get_bus_index("SFX")
 	var volume = linear2db(vol)
 	AudioServer.set_bus_volume_db(sfx_bus_index, volume)
-	print(vol)
+	
+func set_music_volume(vol):
+	vol /= 100.0
+	var music_bus_index = AudioServer.get_bus_index("Music")
+	var volume = linear2db(vol)
+	AudioServer.set_bus_volume_db(music_bus_index, volume)
