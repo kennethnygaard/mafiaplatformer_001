@@ -20,3 +20,14 @@ func _physics_process(delta):
 func on_stop_area_entered(area2d):
 	move_vector.x = 0
 	$AnimationPlayer.play("IDLE")
+	
+func play_walk_animation():
+	$AnimationPlayer.play("WALKING")
+
+func walk(direction):
+	if(direction == "left"):
+		move_vector.x = move_speed
+	if(direction == "still"):
+		move_vector.x = 0
+	if(direction == "right"):
+		move_vector = -move_speed

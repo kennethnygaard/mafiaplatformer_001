@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://assets/images/warehouse.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Gangster_v2.tscn" type="PackedScene" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Scenes/Act_intro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/images/black_background.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/red_background.png" type="Texture" id=11]
+[ext_resource path="res://assets/music/luckylittleraven__thepact3.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/images/Sammy2.png" type="Texture" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "warehouse.png 0"
@@ -1035,6 +1037,14 @@ position = Vector2( 3352.14, 143.77 )
 start_direction = 0
 is_always_standing_still = true
 
+[node name="EndPolice1" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 4777.42, 142.991 )
+z_index = 1
+start_direction = 0
+is_always_standing_still = true
+is_paused = true
+is_end_cop = true
+
 [node name="Police18" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 3300.97, 140.978 )
 start_direction = 0
@@ -1067,6 +1077,20 @@ position = Vector2( 977.659, 142.045 )
 start_direction = 0
 has_health = true
 
+[node name="Police19" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 594.208, 141.049 )
+has_health = true
+
+[node name="Police20" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 125.323, 140.39 )
+start_direction = 0
+has_health = true
+
+[node name="Police21" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( -121.898, 141.386 )
+start_direction = 0
+has_health = true
+
 [node name="Police4" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( -3919.24, 261.05 )
 start_direction = 0
@@ -1076,7 +1100,7 @@ floating = true
 position = Vector2( -4301.71, 332.687 )
 
 [node name="Police9" parent="Enemies" instance=ExtResource( 3 )]
-position = Vector2( -1798.99, -143.728 )
+position = Vector2( -1793.16, -145.185 )
 has_ammo = true
 
 [node name="Police16" parent="Enemies" instance=ExtResource( 3 )]
@@ -1103,10 +1127,8 @@ script = ExtResource( 5 )
 [node name="Timer" type="Timer" parent="Rain_generator"]
 
 [node name="Gangster_v2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -3714.04, 334.421 )
+position = Vector2( -3992.34, 333.282 )
 z_index = 2
-has_baseball_bat = false
-has_tommy_gun = false
 
 [node name="Enemy_turnpoints" type="Node" parent="."]
 
@@ -1236,23 +1258,33 @@ act_title = "The Warehouse"
 position = Vector2( 4744, 98.8974 )
 scale = Vector2( -3, 3 )
 
+[node name="Sammy" type="Sprite" parent="Sammys_escape_car"]
+show_behind_parent = true
+position = Vector2( 5, 10 )
+scale = Vector2( -0.7, 0.7 )
+texture = ExtResource( 13 )
+hframes = 8
+vframes = 8
+frame = 24
+
 [node name="Baseball_bat_pickup" parent="." instance=ExtResource( 7 )]
 position = Vector2( -431.81, 57.2547 )
 item_type = "weapon"
 
 [node name="EndArea" type="Area2D" parent="."]
-position = Vector2( 4721.97, 132.53 )
+position = Vector2( 4074.79, 129.579 )
 collision_layer = 0
 collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EndArea"]
-position = Vector2( 0, 0.323807 )
+position = Vector2( 428.809, 4.8243 )
 shape = SubResource( 24 )
 
 [node name="End_fadeout" type="CanvasLayer" parent="."]
 pause_mode = 2
 
 [node name="Sprite" type="Sprite" parent="End_fadeout"]
+visible = false
 modulate = Color( 1, 1, 1, 0.333333 )
 texture = ExtResource( 10 )
 offset = Vector2( 512, 300 )
@@ -1264,9 +1296,15 @@ anims/fadeout = SubResource( 25 )
 pause_mode = 2
 
 [node name="Sprite" type="Sprite" parent="Die_fadeout"]
+visible = false
 modulate = Color( 1, 1, 1, 0.416667 )
 texture = ExtResource( 11 )
 offset = Vector2( 512, 300 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Die_fadeout"]
 anims/fadeout = SubResource( 26 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+bus = "Music"

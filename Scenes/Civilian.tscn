@@ -1,9 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/downtown_people.png" type="Texture" id=1]
 [ext_resource path="res://Civilian.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "afro_boy_walk"
 length = 0.4
 loop = true
@@ -21,8 +21,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27, 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "jew_walk"
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 step = 0.05
@@ -39,11 +38,47 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=2]
+[sub_resource type="Animation" id=3]
+resource_name = "lady1_walk"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 32, 33, 34, 35, 36, 37, 38, 39 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "lady2_walk"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 40, 41, 42, 43, 44, 45, 46, 47 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=4]
 radius = 13.115
 height = 66.1451
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=5]
 radius = 17.0806
 height = 30.1206
 
@@ -56,21 +91,23 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 20
-frame = 31
+frame = 40
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.7
-anims/afro_boy_walk = SubResource( 4 )
-anims/jew_walk = SubResource( 1 )
+anims/afro_boy_walk = SubResource( 1 )
+anims/jew_walk = SubResource( 2 )
+anims/lady1_walk = SubResource( 3 )
+anims/lady2_walk = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.02997, 1.93119 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Turnpoint_area" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 512
+collision_mask = 8192
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turnpoint_area"]
 position = Vector2( 0.747177, 9.71324 )
-shape = SubResource( 3 )
+shape = SubResource( 5 )

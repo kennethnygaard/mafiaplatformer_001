@@ -19,15 +19,15 @@ var is_shooting = false
 
 var pistol_animation_running = false
 
-export var active_gun = 2
-var damage = [0, 5, 3, 1, 1]
+var active_gun = 0
+var damage = [0, 5, 4, 1, 1]
 
-export var ammo = [0, 1000, 6, 20, 0]
-export var has_baseball_bat = false
-export var has_tommy_gun = false
-export var has_shotgun = false
+var ammo = [0, 0, 0, 0, 0]
+var has_baseball_bat = false
+var has_tommy_gun = false
+var has_shotgun = false
 
-var has_gun = [true, false, true, false, false]
+var has_gun = []
 
 var hit_raycast = [Vector2(10, 0), Vector2(15, 0), Vector2(200, 0), Vector2(200, 0), Vector2(200, 0)]
 
@@ -35,8 +35,8 @@ var shooting_animation = ["top_nothing_idle", "top_baseball_bat_hit", "top_pisto
 var click_animation = ["top_nothing_idle", "top_baseball_bat_idle", "top_pistol_click", "top_MG_idle"]
 var top_idle_animation = ["top_nothing_idle", "top_baseball_bat_idle", "top_pistol_idle", "top_MG_idle"]
 
-var die_forward_animation = ["die_nothing_forward", "die_bat_forward", "die_pistol_forward", "die_pistol_forward"]
-var die_backward_animation = ["die_nothing_backward", "die_bat_backward", "die_pistol_backward", "die_nothing_backward"]
+var die_forward_animation = ["die_nothing_forward", "die_bat_forward", "die_pistol_forward", "die_SMG_forward"]
+var die_backward_animation = ["die_nothing_backward", "die_bat_backward", "die_pistol_backward", "die_SMG_backward"]
 
 enum {WALKING, STANDING, SHOOTING, NOT_SHOOTING}
 
@@ -51,11 +51,17 @@ var type = "player"
 
 onready var Blood = preload("res://Scenes/Blood.tscn")
 
+onready var scene = get_tree().get_nodes_in_group("scene")[0]
+
 signal change_gun_icon
 signal health_changed
 signal ammo_changed
 
 func _ready():
+	ammo = scene.start_ammo
+	has_gun = scene.start_guns
+	active_gun = scene.active_gun
+	
 	if(start_direction == Direction.LEFT):
 		direction = "left"
 		scale.x *= -1
@@ -72,10 +78,6 @@ func _ready():
 			$TopSprite.frame = 40
 		2:
 			$TopSprite.frame = 48 
-	
-	has_gun[1] = has_baseball_bat
-	has_gun[3] = has_tommy_gun
-	has_gun[4] = has_shotgun
 
 	change_ammo_on_HUD()
 
@@ -257,6 +259,8 @@ func on_pick_up_item(area2d):
 			change_health(0, Vector2.ZERO)
 		if(item.item_type == "weapon"):
 			has_gun[item.weapon_type] = true
+			if(ammo[item.weapon_type] <= 0):
+				ammo[item.weapon_type] = 6
 		item.start_end_sequence()
 
 func restart_level():

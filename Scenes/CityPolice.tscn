@@ -353,7 +353,7 @@ shape = SubResource( 13 )
 [node name="Turnpoint_area" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
-collision_mask = 512
+collision_mask = 2048
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turnpoint_area"]
 position = Vector2( -0.375153, 5.50227 )

@@ -1,10 +1,13 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/images/Sammy.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/IntroScene_Sammy.gd" type="Script" id=2]
+[ext_resource path="res://assets/images/Sammy2.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Sammy_cutscene_hideout.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=1]
-resource_name = "IDLE"
+[sub_resource type="CapsuleShape2D" id=1]
+height = 92.8446
+
+[sub_resource type="Animation" id=2]
+resource_name = "idle"
 length = 0.4
 loop = true
 step = 0.05
@@ -21,8 +24,8 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "WALKING"
+[sub_resource type="Animation" id=3]
+resource_name = "walk"
 length = 0.4
 loop = true
 step = 0.05
@@ -39,38 +42,30 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13, 14, 15 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=3]
-radius = 5.13531
-height = 30.8149
-
 [sub_resource type="CapsuleShape2D" id=4]
-radius = 4.7168
 
-[node name="Sammy" type="KinematicBody2D"]
-position = Vector2( -2534.27, 123.302 )
-scale = Vector2( -3, 3 )
-collision_layer = 0
+[node name="Sammy_cutscene_hideout" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 hframes = 8
-vframes = 5
-frame = 15
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "IDLE"
-playback_speed = 0.7
-anims/IDLE = SubResource( 1 )
-anims/WALKING = SubResource( 5 )
+vframes = 8
+frame = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.3847, 2.45699 )
-shape = SubResource( 3 )
+position = Vector2( -8.07031, 12.1055 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/idle = SubResource( 2 )
+anims/walk = SubResource( 3 )
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_mask = 1025
+collision_layer = 524288
+collision_mask = 524288
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -1.26141, 6.78027 )
+position = Vector2( -7.06149, 42.369 )
 shape = SubResource( 4 )

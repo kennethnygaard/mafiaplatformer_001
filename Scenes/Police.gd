@@ -36,6 +36,9 @@ export var is_always_standing_still = false
 export var has_ammo = false
 export var has_health = false
 
+export var is_paused = false
+export var is_end_cop = false
+
 onready var Blood = preload("res://Scenes/Blood.tscn")
 onready var Item = preload("res://Scenes/Pickup.tscn")
 onready var scene = get_tree().get_nodes_in_group("scene")[0]
@@ -59,33 +62,37 @@ func _ready():
 		z_index = -1
 
 func _process(delta):
-	if(!floating):
-		move_vector.y += gravity*delta
-		z_index = 1
-	
-	if(is_shooting):
-		move_vector.x = 0
-	else:
-		if(is_player_in_sight):
-			shoot()
+	if(!is_paused):
+		if(!floating):
+			move_vector.y += gravity*delta
+			z_index = 1
+		
+		if(is_shooting):
+			move_vector.x = 0
 		else:
-			if(is_always_standing_still):
-				move_vector.x = 0
-				if(is_alive):
-					$AnimationPlayer.play("idle_rifle")
+			if(is_player_in_sight):
+				shoot()
 			else:
-				move_vector.x = move_speed*direction
-				if(is_alive):
-					$AnimationPlayer.play("walking_rifle")
+				if(is_always_standing_still):
+					move_vector.x = 0
+					if(is_alive):
+						$AnimationPlayer.play("idle_rifle")
+				else:
+					move_vector.x = move_speed*direction
+					if(is_alive):
+						$AnimationPlayer.play("walking_rifle")
+	else:
+		$AnimationPlayer.play("idle_rifle")
 
 func _physics_process(delta):
-	if(is_alive):
-		move_and_slide(move_vector, Vector2.UP)
-	if(is_on_floor()):
-		move_vector.y = 0
-		if(!is_alive):
-			var floor_normal = get_floor_normal()
-			rotation = floor_normal.angle() + PI/2*direction
+	if(!is_paused):
+		if(is_alive):
+			move_and_slide(move_vector, Vector2.UP)
+		if(is_on_floor()):
+			move_vector.y = 0
+			if(!is_alive):
+				var floor_normal = get_floor_normal()
+				rotation = floor_normal.angle() + PI/2*direction
 
 func on_turnpoint_entered(area2d):
 	turn()
@@ -207,6 +214,9 @@ func change_health(damage, killerpos):
 					$AnimationPlayer.play("die_backwards_001")
 		is_alive = false
 		shrink_collision_shapes()
+		if(is_end_cop):
+			var scene = get_tree().get_nodes_in_group("scene")[0]
+			scene.start_end_fadeout()
 	else:
 		if(fall_direction=="forwards"):
 			turn()

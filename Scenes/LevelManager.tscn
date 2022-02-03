@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Scene_001.tscn" type="PackedScene" id=2]
@@ -8,8 +8,9 @@
 [ext_resource path="res://Scenes/Scene_003.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Scene_004.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Transition_scene_001.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Hideout_end scene.tscn" type="PackedScene" id=9]
 
 [node name="LevelManager" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
-levelScenes = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ) ]
+levelScenes = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 7 ) ]

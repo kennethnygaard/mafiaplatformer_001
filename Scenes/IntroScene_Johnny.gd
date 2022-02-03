@@ -2,9 +2,10 @@ extends KinematicBody2D
 
 var move_vector = Vector2.ZERO
 var gravity = 3500
+var walk_speed = 200
 
 func _ready():
-	pass # Replace with function body.
+	$Area2D.connect("area_entered", self, "on_stop_area_entered")
 
 
 func _process(delta):
@@ -14,3 +15,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	move_vector.y += gravity*delta
+
+func on_stop_area_entered(area2d):
+	$AnimationPlayer.play("IDLE")
+	scale.x *= -1
+	move_vector.x = 0

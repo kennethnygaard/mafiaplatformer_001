@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/images/warehouse.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/IntroScene001.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Scenes/IntroScene_Johnny.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/theme.tres" type="Theme" id=5]
 [ext_resource path="res://Scenes/IntroScene_Sammy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/images/haul_truck.png" type="Texture" id=7]
 
 [sub_resource type="TileSet" id=1]
 0/name = "warehouse.png 0"
@@ -886,7 +887,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -2685, 100 ), Vector2( -2595, 100 ) ]
+"values": [ Vector2( -2685, 100 ), Vector2( -2625, 100 ) ]
 }
 
 [sub_resource type="RectangleShape2D" id=21]
@@ -928,7 +929,7 @@ format = 1
 tile_data = PoolIntArray( -23, 6, 0, 65512, 1, 0, 65513, 1, 0, 65514, 6, 0, 65532, 10, 0, 65533, 10, 1, 65534, 10, 2, 131048, 1, 0, 131049, 1, 0, 131050, 1, 0, 131051, 1, 0, 131052, 1, 0, 131056, 6, 0, 131058, 1, 0, 131068, 10, 65536, 131069, 10, 65537, 131070, 10, 65538 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( -2645, 100 )
+position = Vector2( -2649, 100 )
 current = true
 zoom = Vector2( 1.5, 1.5 )
 
@@ -941,9 +942,10 @@ one_shot = true
 
 [node name="Gangster_v2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -2627.9, 143.858 )
+z_index = 1
 
 [node name="Johnny" parent="." instance=ExtResource( 4 )]
-position = Vector2( -2723.31, 122.909 )
+position = Vector2( -2723.31, 122.065 )
 
 [node name="Panel" type="Panel" parent="."]
 margin_left = -2949.42
@@ -980,3 +982,21 @@ position = Vector2( -2543.19, 161.485 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StopSammyArea"]
 shape = SubResource( 21 )
+
+[node name="StopJohnnyArea" type="Area2D" parent="."]
+position = Vector2( -4240.2, 333.377 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopJohnnyArea"]
+shape = SubResource( 21 )
+
+[node name="StopDonnieArea" type="Area2D" parent="."]
+position = Vector2( -4059.59, 329.157 )
+collision_layer = 2048
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopDonnieArea"]
+shape = SubResource( 21 )
+
+[node name="Haul_truck" type="Sprite" parent="."]
+position = Vector2( -3934, 290 )
+texture = ExtResource( 7 )

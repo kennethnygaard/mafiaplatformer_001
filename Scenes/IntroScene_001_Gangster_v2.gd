@@ -13,6 +13,8 @@ var prev_keys = Vector2.ZERO
 
 var health = 100
 
+var move_speed = 200
+
 var jump_strength = 1000
 var direction = "left"
 
@@ -35,6 +37,7 @@ var walk_state = STANDING
 var shoot_state = NOT_SHOOTING
 
 var type = "player"
+var reached_stop_point = false
 
 onready var Blood = preload("res://Scenes/Blood.tscn")
 
@@ -46,6 +49,8 @@ func _ready():
 	$Hit.visible = false
 	print("player ready")
 	scale.x *= -1
+	
+	$Area2D.connect("area_entered", self, "on_stop_area_entered")
 
 func _process(delta):
 	#process_input()
@@ -100,9 +105,9 @@ func process_movement(delta):
 	move_and_slide_with_snap(move_vector, Vector2(0,0), Vector2.UP, true)
 	if(is_on_floor()):
 		move_vector.y = 0
-		move_vector.x *= ground_friction
-	else:
-		move_vector.x *= ground_friction
+		#move_vector.x *= ground_friction
+	#else:
+		#move_vector.x *= ground_friction
 	move_vector.x += acceleration*keys.x*delta
 	move_vector.x = clamp(move_vector.x, -max_velocity_x, max_velocity_x)
 	if(keys.y == -1 && is_on_floor()):
@@ -187,3 +192,9 @@ func change_ammo_on_HUD():
 
 func set_pistol_animation_running(status):
 	pistol_animation_running = status
+
+func on_stop_area_entered(area2d):
+	move_vector.x = 0
+	print("entered area")
+	reached_stop_point = true
+	

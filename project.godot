@@ -88,6 +88,10 @@ escape={
 [layer_names]
 
 2d_physics/layer_10="ENEMY TURN POINT"
+2d_physics/layer_11="HOODLUM TURN POINT"
+2d_physics/layer_12="POLICE TURN POINT"
+2d_physics/layer_13="SIGFRIED TURN POINT"
+2d_physics/layer_14="CITIZEN TURN POINT"
 2d_physics/layer_17="AMMO_PICKUP"
 2d_physics/layer_18="POLICE_OUT_OF_TRUCK"
 2d_physics/layer_19="DETECT_PLAYER_BEHIND"

@@ -354,6 +354,7 @@ height = 71.3928
 
 [node name="Hoodlum" type="KinematicBody2D"]
 collision_layer = 0
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -391,7 +392,7 @@ scale = Vector2( 3, 3 )
 
 [node name="Turn_area" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 512
+collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Turn_area"]
 position = Vector2( -0.412209, 10.3053 )

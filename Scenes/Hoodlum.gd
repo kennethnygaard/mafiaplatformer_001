@@ -30,6 +30,8 @@ var damage = 10
 export var has_ammo = false
 export var ammo_type = 2
 export var has_health = false
+export var has_weapon = false
+export var weapon_type = 2
 
 var is_player_in_sight = false
 var is_ready_to_shoot = false
@@ -53,19 +55,21 @@ func _process(delta):
 	process_movement(delta)
 	
 func process_animation():
-	var ok = false
+	var player_is_dead = false
 	if(is_alive):
 		if(is_walking && !is_ready_to_shoot):
 			$AnimationPlayer.play(walk_anims[character])
 		else:
+			#ok = true
 			$RayCast2D.force_raycast_update()
 			if($RayCast2D.is_colliding()):
 				var obj_hit = $RayCast2D.get_collider().get_parent()
-				if(obj_hit.is_alive):
-					ok = true
-			if(is_shooting && ok):
+				if(obj_hit != null):
+					if(obj_hit.get("is_alive") != null && !obj_hit.is_alive):
+						player_is_dead = true
+			if(is_shooting && !player_is_dead):
 				$AnimationPlayer.play(shooting_anims[character])
-			else:
+			elif(player_is_dead):
 				$AnimationPlayer.play(idle_anims[character])
 		
 func process_movement(delta):
@@ -168,13 +172,16 @@ func change_health(damage, killerpos):
 			turn()
 
 func spawn_item():
-	if(has_ammo || has_health):
+	if(has_ammo || has_health || has_weapon):
 		var new_item = Item.instance()
 		if(has_ammo):
 			new_item.item_type = "ammo"
 			new_item.ammo_type = ammo_type
-		else:
+		elif(has_health):
 			new_item.item_type = "health"
+		else:
+			new_item.item_type = "weapon"
+			new_item.weapon_type = weapon_type
 		new_item.global_position = global_position
 		new_item.global_position.y -= 50
 		scene.add_child(new_item)

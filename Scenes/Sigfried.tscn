@@ -8,7 +8,7 @@
 radius = 26.8353
 height = 33.1674
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=2]
 resource_name = "die_backward"
 length = 0.4
 step = 0.05
@@ -25,7 +25,7 @@ tracks/0/keys = {
 "values": [ 32, 33, 34, 35, 36, 37, 38, 39 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=3]
 resource_name = "die_forward"
 length = 0.4
 step = 0.05
@@ -42,7 +42,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27, 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=4]
 resource_name = "fire_normal"
 length = 0.4
 step = 0.05
@@ -169,7 +169,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 step = 0.05
@@ -186,7 +186,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 step = 0.05
@@ -234,12 +234,12 @@ shape = SubResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 playback_speed = 0.7
-anims/die_backward = SubResource( 12 )
-anims/die_forward = SubResource( 13 )
-anims/fire_normal = SubResource( 14 )
+anims/die_backward = SubResource( 2 )
+anims/die_forward = SubResource( 3 )
+anims/fire_normal = SubResource( 4 )
 anims/fire_turn = SubResource( 5 )
-anims/idle = SubResource( 15 )
-anims/walking = SubResource( 16 )
+anims/idle = SubResource( 6 )
+anims/walking = SubResource( 7 )
 
 [node name="Turn_area" type="Area2D" parent="."]
 collision_layer = 0

@@ -55,6 +55,9 @@ func start_end_sequence():
 				$SMGAudioStreamPlayer.play()
 	if(item_type=="health"):
 		$HealthAudioStreamPlayer.play()
+		
+	if(item_type=="weapon"):
+		$SMGAudioStreamPlayer.play()
 	set_bounce()
 	$AnimationPlayer.play("dissolve")
 	

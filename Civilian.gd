@@ -6,9 +6,9 @@ var move_speed = 0
 export var direction = -1
 
 export var character = 0
-var animations = ["jew_walk", "afro_boy_walk"]
-var start_frame = [8, 24]
-var move_speeds = [100, 100]
+var animations = ["jew_walk", "afro_boy_walk", "lady1_walk", "lady2_walk"]
+var start_frame = [8, 24, 32, 40]
+var move_speeds = [100, 100, 120, 130]
 
 
 func _ready():
