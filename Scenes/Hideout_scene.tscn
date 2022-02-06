@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scenes/Hideout_scene.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Gangster_v2.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/Pickup.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/images/black_background.png" type="Texture" id=9]
 [ext_resource path="res://assets/images/red_background.png" type="Texture" id=10]
+[ext_resource path="res://assets/music/foolboymedia__new-york-jazz-loop.mp3" type="AudioStream" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "hideout.png 0"
@@ -753,13 +754,13 @@ has_ammo = true
 position = Vector2( 5399.92, 529.783 )
 direction = 1
 character = 1
-has_ammo = true
+has_health = true
 
 [node name="Hoodlum13" parent="Hoodlums" instance=ExtResource( 5 )]
 position = Vector2( 7154.05, -913.374 )
 direction = 1
 character = 1
-has_ammo = true
+has_health = true
 
 [node name="Hoodlum14" parent="Hoodlums" instance=ExtResource( 5 )]
 position = Vector2( 7515.31, -917.099 )
@@ -1019,3 +1020,8 @@ offset = Vector2( 512, 300 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Die_fadeout"]
 anims/fadeout = SubResource( 25 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+bus = "Music"

@@ -3,6 +3,7 @@ extends Node
 onready var players = get_tree().get_nodes_in_group("player")
 onready var Pause_menu = preload("res://Scenes/Pause_menu.tscn")
 
+
 func _ready():
 	players[0].connect("change_gun_icon", self, "on_gun_icon_changed")
 	players[0].connect("health_changed", self, "change_health")

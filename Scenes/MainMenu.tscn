@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/images/main_menu_background.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/SFX/menu-select-1.mp3" type="AudioStream" id=8]
 [ext_resource path="res://assets/images/green_background.png" type="Texture" id=9]
 [ext_resource path="res://assets/SFX/menu_thud.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/music/migfus20__jazz-background-music-loop.mp3" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -360,3 +361,8 @@ bus = "SFX"
 stream = ExtResource( 10 )
 volume_db = -10.0
 bus = "SFX"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+bus = "Music"

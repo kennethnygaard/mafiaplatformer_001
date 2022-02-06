@@ -26,7 +26,7 @@ func _ready():
 				amount = 6
 				#amount = rnd.randi_range(1, 6)
 			3:
-				amount = rnd.randi_range(5, 10)
+				amount = 15
 	if(item_type == "health"):
 		amount = 50
 		$Sprite.frame = 5

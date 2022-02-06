@@ -63,7 +63,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19, 20, 21, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=25]
 resource_name = "die_SMG_backward"
 length = 0.4
 step = 0.05
@@ -94,7 +94,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=26]
 resource_name = "die_SMG_forward"
 length = 0.4
 step = 0.05
@@ -125,7 +125,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=27]
 resource_name = "die_bat_backward"
 length = 0.4
 step = 0.05
@@ -156,7 +156,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=28]
 resource_name = "die_bat_forward"
 length = 0.4
 step = 0.05
@@ -187,7 +187,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=29]
 resource_name = "die_nothing_backward"
 length = 0.4
 step = 0.05
@@ -218,7 +218,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=30]
 resource_name = "die_nothing_forward"
 length = 0.4
 step = 0.05
@@ -249,7 +249,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=31]
 resource_name = "die_pistol_backward"
 length = 0.4
 step = 0.05
@@ -280,7 +280,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=32]
 resource_name = "die_pistol_forward"
 length = 0.4
 step = 0.05
@@ -311,7 +311,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=33]
 length = 0.4
 loop = true
 step = 0.05
@@ -328,7 +328,7 @@ tracks/0/keys = {
 "values": [ 56, 57, 58, 59, 60, 61, 62, 63 ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=34]
 length = 0.4
 loop = true
 step = 0.05
@@ -391,7 +391,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=35]
 length = 0.4
 step = 0.05
 tracks/0/type = "value"
@@ -452,7 +452,7 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=36]
 length = 0.4
 loop = true
 step = 0.05
@@ -676,18 +676,18 @@ anims/bottom_walking = SubResource( 4 )
 
 [node name="TopAnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.7
-anims/die_SMG_backward = SubResource( 5 )
-anims/die_SMG_forward = SubResource( 6 )
-anims/die_bat_backward = SubResource( 7 )
-anims/die_bat_forward = SubResource( 8 )
-anims/die_nothing_backward = SubResource( 9 )
-anims/die_nothing_forward = SubResource( 10 )
-anims/die_pistol_backward = SubResource( 11 )
-anims/die_pistol_forward = SubResource( 12 )
-anims/top_MG_idle = SubResource( 13 )
-anims/top_MG_shooting = SubResource( 14 )
-anims/top_baseball_bat_hit = SubResource( 15 )
-anims/top_baseball_bat_idle = SubResource( 16 )
+anims/die_SMG_backward = SubResource( 25 )
+anims/die_SMG_forward = SubResource( 26 )
+anims/die_bat_backward = SubResource( 27 )
+anims/die_bat_forward = SubResource( 28 )
+anims/die_nothing_backward = SubResource( 29 )
+anims/die_nothing_forward = SubResource( 30 )
+anims/die_pistol_backward = SubResource( 31 )
+anims/die_pistol_forward = SubResource( 32 )
+anims/top_MG_idle = SubResource( 33 )
+anims/top_MG_shooting = SubResource( 34 )
+anims/top_baseball_bat_hit = SubResource( 35 )
+anims/top_baseball_bat_idle = SubResource( 36 )
 anims/top_nothing_idle = SubResource( 17 )
 anims/top_nothing_shooting = SubResource( 18 )
 anims/top_pistol_click = SubResource( 19 )

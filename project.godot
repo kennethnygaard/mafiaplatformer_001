@@ -13,6 +13,7 @@ config_version=4
 config/name="Prototyping4weeks"
 run/main_scene="res://Scenes/Scene_001.tscn"
 config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -87,6 +88,7 @@ escape={
 
 [layer_names]
 
+2d_physics/layer_7="SAMMY_ACTION_POINT"
 2d_physics/layer_10="ENEMY TURN POINT"
 2d_physics/layer_11="HOODLUM TURN POINT"
 2d_physics/layer_12="POLICE TURN POINT"

@@ -1,6 +1,5 @@
 extends Node
 
-
 var active_item = 0
 var active_anims = ["start_active", "SFX_volume_active", "music_volume_active", "select_level_active", "quit_active"]
 var inactive_anims = ["start_inactive", "SFX_volume_inactive", "music_volume_inactive", "select_level_inactive", "quit_inactive"]
@@ -9,8 +8,7 @@ onready var menu_labels = $CanvasLayer/MenuLabels.get_children()
 var volume_steps = 10
 var selected_level = 1
 
-
-var levels = [0, 1, 4, 5, 6]
+var levels = [0, 1, 4, 5, 7]
 var max_level = 4
 
 func _ready():

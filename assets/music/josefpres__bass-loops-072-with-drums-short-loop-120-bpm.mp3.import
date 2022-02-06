@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/josefpres__bass-loops-072-with-drums-short-loop-120-bpm.mp3-6d1ff832b4274c7b0b2aeb1f203beea1.mp3str"
+
+[deps]
+
+source_file="res://assets/music/josefpres__bass-loops-072-with-drums-short-loop-120-bpm.mp3"
+dest_files=[ "res://.import/josefpres__bass-loops-072-with-drums-short-loop-120-bpm.mp3-6d1ff832b4274c7b0b2aeb1f203beea1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

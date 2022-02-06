@@ -13,7 +13,7 @@ var is_player_in_sight = false
 var is_walking = false
 
 var damage = 35
-var health = 15
+var health = 12
 var is_alive = true
 var hitpos = Vector2.ZERO
 

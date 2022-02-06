@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mvrasseli__funky-loop.mp3-b3a23845c95fcf669c53768de9d8ff93.mp3str"
+
+[deps]
+
+source_file="res://assets/music/mvrasseli__funky-loop.mp3"
+dest_files=[ "res://.import/mvrasseli__funky-loop.mp3-b3a23845c95fcf669c53768de9d8ff93.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

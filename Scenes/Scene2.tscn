@@ -11,7 +11,7 @@
 [ext_resource path="res://Scenes/Act_intro.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/images/black_background.png" type="Texture" id=10]
 [ext_resource path="res://assets/images/red_background.png" type="Texture" id=11]
-[ext_resource path="res://assets/music/luckylittleraven__thepact3.mp3" type="AudioStream" id=12]
+[ext_resource path="res://assets/music/mvrasseli__funky-loop.mp3" type="AudioStream" id=12]
 [ext_resource path="res://assets/images/Sammy2.png" type="Texture" id=13]
 
 [sub_resource type="TileSet" id=1]

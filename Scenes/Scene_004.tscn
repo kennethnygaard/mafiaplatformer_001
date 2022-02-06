@@ -4,7 +4,9 @@
 [ext_resource path="res://Scenes/Docks_scene.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Scene_004.gd" type="Script" id=3]
 
-[node name="Scene_004" type="Node"]
+[node name="Scene_004" type="Node" groups=[
+"main",
+]]
 script = ExtResource( 3 )
 
 [node name="HUD" parent="." instance=ExtResource( 1 )]

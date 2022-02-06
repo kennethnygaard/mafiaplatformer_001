@@ -9,6 +9,8 @@ var air_friction = 0.95
 var keys = Vector2.ZERO
 var prev_keys = Vector2.ZERO
 
+var activated = true
+
 var health = 100
 var is_alive = true
 
@@ -82,12 +84,17 @@ func _ready():
 	change_ammo_on_HUD()
 
 func _process(_delta):
-	if(is_alive):
+	if(is_alive && activated):
 		process_input()
 		process_states()
 		process_animation()
 		process_SFX()
-
+	
+	if(!activated):
+		$TopAnimationPlayer.play("top_baseball_bat_idle")
+		$BottomAnimationPlayer.play("bottom_idle")
+		move_vector.x = 0
+	
 func _physics_process(delta):
 	process_movement(delta)	
 
@@ -250,7 +257,6 @@ func on_pick_up_item(area2d):
 	var item = area2d.get_parent()
 	if(!item.is_picked_up):
 		item.is_picked_up = true
-		print("item picked up: ", item.item_type)
 		if(item.item_type == "ammo"):
 			ammo[item.ammo_type] += item.amount
 			change_ammo_on_HUD()

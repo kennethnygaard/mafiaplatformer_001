@@ -11,6 +11,7 @@ func _ready():
 	for enemy in enemies:
 		enemy.connect("health_changed", self, "change_health")
 	on_gun_icon_changed(players[0].active_gun)
+	players[0].change_ammo_on_HUD()
 
 func _process(delta):
 	if(Input.is_action_just_pressed("escape")):

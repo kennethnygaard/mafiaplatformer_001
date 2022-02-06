@@ -198,7 +198,6 @@ func change_health(damage, killerpos):
 		damage *= 3
 		headshot = true
 	health += damage
-	#print(hitpos - global_position)
 	if(health < 1):
 		spawn_item()
 		if(is_alive):
